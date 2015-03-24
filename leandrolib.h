@@ -1,5 +1,8 @@
 #include <stdlib.h>
+#include <iostream>
 #include <stdio.h>
+using namespace std;
+
 
 // i/o
 char *LerString(char *pmensa, int ptamanho){
@@ -9,26 +12,26 @@ char *LerString(char *pmensa, int ptamanho){
   return pdado;
 }
 
-int LerInteiro(char *pmensa){
-  int pdado;
+int LerInteiro(const char *pmensa){
+  int pdado=0;
   printf("%s \n", pmensa);
   scanf ("%d", &pdado);
   return pdado;
 }
-
-double LerFloat(char *pmensa){
+/*
+double LerDouble(char *pmensa){
   double pdado;
   printf("%s \n", pmensa);
   scanf("%lf, &pdado");
   return pdado;
-}
+}*/
 
-void MostraString(char *pmensa, char *pdado){
+void MostraString(const char *pmensa, const char *pdado){
   printf("%s ", pmensa);
   printf("%s \n", pdado);
 }
 
-void MostraInteiro(char *pmensa, int pdado){
+void MostraInteiro(const char *pmensa, int pdado){
   printf("%s ", pmensa);
   printf("%d \n", pdado);
 }
