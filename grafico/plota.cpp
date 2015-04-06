@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <vector>
 #include "ponto.h"
 #include "linha.h"
 #include "funcoes.h"
-#include <vector>
 
 int main(int argc, char const *argv[]){
 
@@ -25,14 +26,10 @@ int main(int argc, char const *argv[]){
 
 	AdicionarLinha(matriz, ponto[0], ponto[1]);
 
-	AdicionarPonto(matriz, ponto[0]);
-	AdicionarPonto(matriz, ponto[1]);
-
-
+	//AdicionarPonto(matriz, ponto[0]);
+	//AdicionarPonto(matriz, ponto[1]);
 
 	ImprimeMatriz(matriz);
-
-
 
 	return 0;
 }
