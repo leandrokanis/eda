@@ -20,7 +20,7 @@ int main(int argc, char const *argv[]){
 
 	vector<Ponto> ponto(tamanho);
 	ponto[0] = Ponto(1,50);
-	ponto[1] = Ponto(10,50);
+	ponto[1] = Ponto(10,51);
 
 	Linha linha = Linha(ponto[0], ponto[1]);
 

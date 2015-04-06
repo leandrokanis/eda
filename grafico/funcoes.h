@@ -18,19 +18,32 @@ void AdicionarPonto(string (&matriz)[20][80], Ponto (&ponto)){
 }
 
 void AdicionarLinha(string (&matriz)[20][80], Ponto (&comeco), Ponto (&fim)){
-	int largura, altura, incremento;
+	int incremento, largura, altura;
 	Ponto ponteiro(comeco.x, comeco.y);
 
 	// incremento pode ser negativo ou positivo
 	altura = comeco.x - fim.x;
+	largura = comeco.y - fim.y;
 	incremento = (altura/abs(altura) * (-1));
 
-	while (ponteiro.x <= fim.x){
-		
+	altura = (altura/abs(altura)) * altura + incremento*incremento;
+	largura = (largura/abs(largura)) * largura + incremento*incremento;
+
+
+	do{
 		matriz[ponteiro.x][ponteiro.y] = "L";
+		cout << "ponteiro.x: " << ponteiro.x << endl;
+		cout << "fim.x: " << fim.x << endl;
+
+		ponteiro.x += incremento;
+
+		if(((ponteiro.x*largura)%altura) == 0){
+			ponteiro.y += incremento;
+			matriz[ponteiro.x][ponteiro.y] = "L";
+		}
 		
-		cout << ponteiro.x << " " << ponteiro.y << endl;
 		
-		ponteiro.x = ponteiro.x + incremento;
-	}
+		//cout << ponteiro.x << " " << (ponteiro.x*largura)/altura << endl;
+		
+	} while (ponteiro.x != fim.x+incremento);
 }
