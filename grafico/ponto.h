@@ -7,6 +7,7 @@ public:
 		x = -1;
 		y = -1;
 	}
+	
 	Ponto(int x, int y){
 		this->x = x;
 		this->y = y;
