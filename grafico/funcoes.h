@@ -30,20 +30,19 @@ void AdicionarLinha(string (&matriz)[20][80], Ponto (&comeco), Ponto (&fim)){
 	largura = (largura/abs(largura)) * largura + incremento*incremento;
 
 
-	do{
+	for(ponteiro.x; ponteiro.x <= fim.x; ponteiro.x ++){
+		
 		matriz[ponteiro.x][ponteiro.y] = "L";
-		cout << "ponteiro.x: " << ponteiro.x << endl;
-		cout << "fim.x: " << fim.x << endl;
+		// cout << "ponteiro.x: " << ponteiro.x << endl;
+		// cout << "fim.x: " << fim.x << endl;
 
-		ponteiro.x += incremento;
-
-		if(((ponteiro.x*largura)%altura) == 0){
-			ponteiro.y += incremento;
-			matriz[ponteiro.x][ponteiro.y] = "L";
-		}
+		// if(((ponteiro.x*largura)%altura) == 0){
+		// 	matriz[ponteiro.x][ponteiro.y] = "L";
+		// 	ponteiro.y ++;
+		// }
 		
 		
-		//cout << ponteiro.x << " " << (ponteiro.x*largura)/altura << endl;
+		cout << ponteiro.x << " "<< ponteiro.y << endl;
 		
-	} while (ponteiro.x != fim.x+incremento);
+	}
 }
