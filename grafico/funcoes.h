@@ -24,25 +24,21 @@ void AdicionarLinha(string (&matriz)[20][80], Ponto (&comeco), Ponto (&fim)){
 	// incremento pode ser negativo ou positivo
 	altura = comeco.x - fim.x;
 	largura = comeco.y - fim.y;
-	incremento = (altura/abs(altura) * (-1));
-
-	altura = (altura/abs(altura)) * altura + incremento*incremento;
-	largura = (largura/abs(largura)) * largura + incremento*incremento;
 
 
-	for(ponteiro.x; ponteiro.x <= fim.x; ponteiro.x ++){
-		
-		matriz[ponteiro.x][ponteiro.y] = "L";
-		// cout << "ponteiro.x: " << ponteiro.x << endl;
-		// cout << "fim.x: " << fim.x << endl;
-
-		// if(((ponteiro.x*largura)%altura) == 0){
-		// 	matriz[ponteiro.x][ponteiro.y] = "L";
-		// 	ponteiro.y ++;
-		// }
-		
-		
-		cout << ponteiro.x << " "<< ponteiro.y << endl;
-		
+	if(largura == 0){
+		incremento = (altura/abs(altura) * (-1));
+		altura = (altura/abs(altura)) * altura + incremento*incremento;
+		for(ponteiro.x; ponteiro.x <= fim.x; ponteiro.x ++){
+			matriz[ponteiro.x][ponteiro.y] = "L";
+			cout << ponteiro.x << " "<< ponteiro.y << endl;
+		}
+	} else if(altura == 0){
+		incremento = (largura/abs(largura) * (-1));
+		largura = (largura/abs(largura)) * largura + incremento*incremento;
+		for(ponteiro.x; ponteiro.x <= fim.x; ponteiro.x ++){
+			matriz[ponteiro.x][ponteiro.y] = "L";
+			cout << ponteiro.x << " "<< ponteiro.y << endl;
+		}		
 	}
 }
