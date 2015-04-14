@@ -1,0 +1,49 @@
+1 Jovem M 35.7878 Obeso
+2 Adulto M 43.9153 Obeso
+3 Jovem F 38.1648 Marginalmente acima do peso
+4 Jovem M 26.7851 Marginalmente acima do peso
+5 Jovem F 17.4154 Abaixo do peso
+6 Jovem F 21.4198 No peso normal
+7 Jovem F 38.746 Marginalmente acima do peso
+8 Jovem M 14.3962 Abaixo do peso
+9 Jovem F 13.9917 Abaixo do peso
+10 Adolescente F 45.1665 Marginalmente acima do peso
+11 Adolescente M 32.3884 Obeso
+12 Jovem M 64.0512 Obeso
+13 Jovem F 28.0452 Marginalmente acima do peso
+14 Adolescente M 19.4744 Abaixo do peso
+15 Jovem F 46.3347 Marginalmente acima do peso
+16 Adolescente F 50.281 Marginalmente acima do peso
+17 Jovem F 24.7619 No peso normal
+18 Jovem M 30.176 Acima do peso ideal
+19 Adulto M 15.8016 Abaixo do peso
+20 Adulto F 44.2832 Marginalmente acima do peso
+21 Adulto M 26.8618 Marginalmente acima do peso
+22 Adulto F 32.9799 Marginalmente acima do peso
+23 Adulto F 32.0055 Marginalmente acima do peso
+24 Adulto M 18.4971 Abaixo do peso
+25 Adulto F 39.2627 Marginalmente acima do peso
+26 Adulto M 26.6893 Marginalmente acima do peso
+27 Adulto F 41.2105 Marginalmente acima do peso
+28 Adulto F 56.2695 Marginalmente acima do peso
+29 Idoso M 37.1335 Obeso
+30 Idoso F 41.9958 Marginalmente acima do peso
+31 Adulto M 51.066 Obeso
+32 Adulto F 30.2786 Marginalmente acima do peso
+33 Idoso M 10.6187 Abaixo do peso
+34 Idoso F 13.9709 Abaixo do peso
+35 Adulto M 24.7759 No peso normal
+36 Idoso F 25.9609 Marginalmente acima do peso
+37 Idoso F 33.9621 Marginalmente acima do peso
+38 Idoso F 20.2785 No peso normal
+39 Idoso F 16.5657 Abaixo do peso
+40 Adulto M 16.0402 Abaixo do peso
+41 Idoso M 18.6794 Abaixo do peso
+42 Idoso M 32.13 Obeso
+43 Idoso F 23.626 No peso normal
+44 Idoso F 28.7543 Marginalmente acima do peso
+45 Idoso M 37.0797 Obeso
+46 Idoso F 14.0672 Abaixo do peso
+47 Idoso F 12.871 Abaixo do peso
+48 Adulto M 46.401 Obeso
+49 Idoso F 39.5929 Marginalmente acima do peso

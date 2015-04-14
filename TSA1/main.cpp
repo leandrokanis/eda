@@ -2,64 +2,117 @@
 #include <vector>
 #include <fstream>
 #include <stdlib.h>
-#include "vendedor.h"
-#include "funcoes.h"
-using namespace std;
+#include "cliente.h"
+using namespace std; 
 
 int Tamanho(){
 	int i=0;
-	ifstream arquivo("MovimentoVendas.txt");
+	ifstream arquivo("Clientes.txt");
 	while(arquivo){
 		string linha;
 		getline(arquivo, linha);
 		i++;
 	}
-	return i-1;
+	return i-2;
 }
 
 // Pega valores do arquivo e joga no vetor
-void PegarValores(vector<Vendedor> &vendedor){
-	ifstream arquivo("MovimentoVendas.txt");
+void PegarValores(vector<Cliente> &cliente){
+	ifstream arquivo("Clientes.txt");
 	int i=0;
 	int tamanho = Tamanho();
+
+		string linha;
+		getline(arquivo, linha);
 		for(i=0; i <= tamanho; i++){
-				arquivo >> vendedor[i].codigo;
-				arquivo >> vendedor[i].salarioBase;
-				arquivo >> vendedor[i].valorDeVendas;	
+				arquivo >> cliente[i].matricula;
+				arquivo >> cliente[i].idade;
+				arquivo >> cliente[i].sexo;
+				arquivo >> cliente[i].altura;
+				arquivo >> cliente[i].peso;	
+
+				// cout << cliente[i].matricula << " ";
+				// cout << cliente[i].idade << " ";
+				// // cout << cliente[i].sexo << " ";
+				// cout << cliente[i].altura << " ";
+				// cout << cliente[i].peso << endl;	
 		}
 }
 
-double MediaVendas(vector<Vendedor> &vendedor){
-	double media = 0;
+// double MediaVendas(vector<Cliente> &cliente){
+// 	double media = 0;
+// 	int tamanho = Tamanho();
+// 	for (int i = 0; i < tamanho; ++i){
+// 		media += cliente[i].peso;
+// 	}
+// 	return media/Tamanho();
+// }
+
+void CalcularFaixaEtaria(vector<Cliente> &cliente){
 	int tamanho = Tamanho();
 	for (int i = 0; i < tamanho; ++i){
-		media += vendedor[i].valorDeVendas;
+		if(cliente[i].idade <= 11)
+			cliente[i].faixaEtaria = "Infantil";
+		else if(cliente[i].idade >= 12 && cliente[i].idade <= 17)
+			cliente[i].faixaEtaria = "Adolescente";
+		else if(cliente[i].idade >= 18 && cliente[i].idade <= 24) 
+			cliente[i].faixaEtaria = "Jovem";
+		else if(cliente[i].idade >= 25 && cliente[i].idade <= 54) 
+			cliente[i].faixaEtaria = "Adulto";
+		else if(cliente[i].idade >= 55) 
+			cliente[i].faixaEtaria = "Idoso";
 	}
-	return media/Tamanho();
+}
+	
+void CalcularIMC(vector<Cliente> &cliente){
+	int tamanho = Tamanho();
+	for (int i = 0; i < tamanho; ++i){
+		cliente[i].imc = cliente[i].peso / (cliente[i].altura * cliente[i].altura);
+	}
 }
 
-void CalcularComissao(vector<Vendedor> &vendedor){
-	double media = MediaVendas(vendedor);
+void AnalizarCondicao(vector<Cliente> &cliente){
 	int tamanho = Tamanho();
 	for (int i = 0; i < tamanho; ++i){
-		if(vendedor[i].valorDeVendas <= media){
-			vendedor[i].comissao = vendedor[i].valorDeVendas*3/100;
-			vendedor[i].salarioFinal = vendedor[i].salarioBase + vendedor[i].comissao;
-		} else {
-			vendedor[i].comissao = vendedor[i].valorDeVendas*5/100;
-			vendedor[i].salarioFinal = vendedor[i].salarioBase + vendedor[i].comissao;
+
+		// Mulheres
+		if(cliente[i].sexo == "F"){
+			if(cliente[i].imc < 19.1)
+				cliente[i].condicao = "Abaixo do peso";
+			else if(cliente[i].imc >= 19.1 && cliente[i].imc <= 25.8 )
+				cliente[i].condicao = "No peso normal";
+			else if(cliente[i].imc >= 25,8 && cliente[i].imc <= 27,3 )
+				cliente[i].condicao = "Marginalmente acima do peso";
+			else if(cliente[i].imc >= 27,3 && cliente[i].imc <= 32,3 )
+				cliente[i].condicao = "Acima do peso ideal";
+			else if(cliente[i].imc > 32.3)
+				cliente[i].condicao = "Obeso";
 		}
+
+		// homens
+		else if(cliente[i].sexo == "M"){
+			if(cliente[i].imc < 20.7)
+				cliente[i].condicao = "Abaixo do peso";
+			else if(cliente[i].imc >= 20.7 && cliente[i].imc <= 26.4 )
+				cliente[i].condicao = "No peso normal";
+			else if(cliente[i].imc >= 26.4 && cliente[i].imc <= 27.8 )
+				cliente[i].condicao = "Marginalmente acima do peso";
+			else if(cliente[i].imc >= 27.8 && cliente[i].imc <= 31.1 )
+				cliente[i].condicao = "Acima do peso ideal";
+			else if(cliente[i].imc > 31.1)
+				cliente[i].condicao = "Obeso";
+		}
+		cout <<	cliente[i].condicao << endl;
+
 	}
 }
 
-
-
-int *Ordenar(vector<Vendedor> &vendedor, int vetor[]){
+int *Ordenar(vector<Cliente> &cliente, int vetor[]){
 	
 	int n = Tamanho(), ordem[n];
 	for (int i = 0; i < n; ++i){
-		vetor[i] = vendedor[i].codigo;
-		ordem[i] = vendedor[i].codigo;
+		vetor[i] = cliente[i].matricula;
+		ordem[i] = cliente[i].matricula;
 	}
 
 	int j,i,key;
@@ -85,19 +138,19 @@ int *Ordenar(vector<Vendedor> &vendedor, int vetor[]){
    	return vetor;
 }
 
-void Gravar(vector<Vendedor> &vendedor){
-	ofstream saida("saida.txt");
+void Gravar(vector<Cliente> &cliente){
+	ofstream saida("AnaliseIMC.txt");
 	int tamanho = Tamanho();
 
 	int vetor[tamanho];
-	int *a = Ordenar(vendedor, vetor);
+	int *a = Ordenar(cliente, vetor);
 
 	for (int i = 0; i < tamanho; ++i){
-		saida  << vendedor[a[i]].codigo;
-		saida  << " " << vendedor[a[i]].salarioBase;
-		saida  << " " << vendedor[a[i]].valorDeVendas;
-		saida  << " " << vendedor[a[i]].comissao;
-		saida  << " " << vendedor[a[i]].salarioFinal << endl;
+		saida  << cliente[a[i]].matricula;
+		saida  << " " << cliente[a[i]].faixaEtaria;
+		saida  << " " << cliente[a[i]].sexo;
+		saida  << " " << cliente[a[i]].imc;
+		saida  << " " << cliente[a[i]].condicao << endl;
 	}
 }
 	
@@ -105,13 +158,17 @@ int main(int argc, char const *argv[]){
 	int tamanho;
 	double media;
 	tamanho = Tamanho();
-	vector<Vendedor> vendedor(tamanho);
+	vector<Cliente> cliente(tamanho);
 	
-	PegarValores(vendedor);
+	PegarValores(cliente);
 
-	CalcularComissao(vendedor);
+	CalcularFaixaEtaria(cliente);
 
-	Gravar(vendedor);
+	CalcularIMC(cliente);
+
+	AnalizarCondicao(cliente);
+
+	Gravar(cliente);
 
 	return 0;
 }
