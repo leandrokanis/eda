@@ -1,3 +1,6 @@
+// TSA1 - 1/2015
+// Leandro Alves 10/011/3/4
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -30,23 +33,9 @@ void PegarValores(vector<Cliente> &cliente){
 				arquivo >> cliente[i].sexo;
 				arquivo >> cliente[i].altura;
 				arquivo >> cliente[i].peso;	
-
-				// cout << cliente[i].matricula << " ";
-				// cout << cliente[i].idade << " ";
-				// // cout << cliente[i].sexo << " ";
-				// cout << cliente[i].altura << " ";
-				// cout << cliente[i].peso << endl;	
 		}
 }
 
-// double MediaVendas(vector<Cliente> &cliente){
-// 	double media = 0;
-// 	int tamanho = Tamanho();
-// 	for (int i = 0; i < tamanho; ++i){
-// 		media += cliente[i].peso;
-// 	}
-// 	return media/Tamanho();
-// }
 
 void CalcularFaixaEtaria(vector<Cliente> &cliente){
 	int tamanho = Tamanho();
@@ -102,7 +91,6 @@ void AnalizarCondicao(vector<Cliente> &cliente){
 			else if(cliente[i].imc > 31.1)
 				cliente[i].condicao = "Obeso";
 		}
-		cout <<	cliente[i].condicao << endl;
 
 	}
 }
@@ -159,6 +147,9 @@ int main(int argc, char const *argv[]){
 	double media;
 	tamanho = Tamanho();
 	vector<Cliente> cliente(tamanho);
+
+	ifstream arquivo("Clientes.txt");
+	ofstream saida("AnaliseIMC.txt");
 	
 	PegarValores(cliente);
 
