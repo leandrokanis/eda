@@ -1,87 +1,96 @@
 #include <iostream>
 using namespace std;
 
-class Lista{
+struct No
+{
+    int data;
+    No *proximo;
+};
+int contador = 0;
 
+class fila{
+    No *calda;
 public:
-    struct No {
-        int tamanho;
-        long int *endereco;
-        No *proximo;
-    };
-
-    Lista(){
-        cabeca = NULL;
+    fila(){
+        calda=NULL;
     }
 
-    void empilhar(int val){
-        No *n = new No();
-        n->endereco = new long int[val];
-        n->tamanho = val;
-        n->proximo = cabeca;
-        cabeca = n;
+    void inserir(int data){
+        if(contador >= 5){
+            cout << "fila cheia" << endl;
+        } else {
+            No *p=new No;
+            p->data=data;
+            if(calda==NULL){
+                calda=p;
+                calda->proximo=p;
+            }
+            else{
+                p->proximo=calda->proximo;
+                calda->proximo=p;
+                calda=p;
+            }
+            contador++;
+        }
     }
 
-    void desempilhar(){
-        No *n = cabeca;
-        int valor = n->tamanho;
-        delete n->endereco;
-
-        cabeca = cabeca->proximo;
-        delete n;
+    void del(){
+        if(calda==NULL)
+            cout<<"fila Empty";
+        else{
+            No *t=calda->proximo;
+            cout<<"The element to be deleted is"<<calda->proximo->data;
+            if(calda==t)
+                calda=NULL;
+            else
+            {
+                calda->proximo=t->proximo;
+                delete t;
+            }
+            contador--;
+        }
     }
 
-    int consultar(){
-        No *n = cabeca;
-        int valor = n->tamanho;
-        return valor;
+    void display()
+    {
+        No *t=calda;
+        if(calda==NULL)
+            cout<<"fila Empty";
+        else
+        {
+            do
+            {
+                t=t->proximo;
+                cout<<t->data<<" ";
+            }while(t!=calda);
+        }
     }
-
-    No *cabeca;
 };
 
-int main() {
-    Lista lista;
-
-    int valor = 0;
-    int menu=0;
-
-  do{
-
-    cout << endl << endl<< "==== MENU ===" << endl;
-    cout << "1. Empilhar" << endl;
-    cout << "2. Desempilhar" << endl;
-    cout << "3. Consultar" << endl;
-    cout << "0. Sair" << endl;
-
-    cin >> menu;
-
-    switch(menu){
-      case 0:
-        cout << "Fim" << endl;
-        break;
-      case 1:
-        cout << "Empilhar" << endl;
-        cout << "Tamanho: ";
-        cin >> valor;
-        lista.empilhar(valor);
-        cout << endl << "Empilhado com sucesso." << endl;
-        break;
-      case 2:
-        lista.desempilhar();
-        cout << endl << "Desempilhado com sucesso." << endl;
-        break;
-      case 3:
-        cout << "Consultar" << endl;
-        cout << "O elemento do topo é: " ;
-        cout << lista.cabeca->endereco; 
-        cout << " de tamanho " << lista.cabeca->tamanho << endl; 
-        break;
-      default:
-        cout << "opção inválida" << endl;
-        break;
+int main(int argc, char const *argv[]){
+    //clrscr();
+    fila q;
+    int data,option;
+    while(1)
+    {
+        cout<<"\n 1.inserir \n 2.Delete \n 3.Display\n 4.Exit\n Enter your Option";
+        cin>>option;
+        switch(option)
+        {
+            case 1:
+                    cout<<"\nEnter the element to be inserired";
+                    cin>>data;
+                    q.inserir(data);
+                    break;
+            case 2:
+                    q.del();
+                    break;
+            case 3:
+                    q.display();
+                    break;
+            case 4:
+                    break;
+        }
     }
-  } while(menu!=0);
-
     return 0;
 }
